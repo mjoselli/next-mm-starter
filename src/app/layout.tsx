@@ -1,10 +1,8 @@
-import { auth } from '@/lib/auth';
-import Providers from '@/components/layout/providers';
-import { Toaster } from '@/components/ui/sonner';
 import type { Metadata } from 'next';
-import { NuqsAdapter } from 'nuqs/adapters/next/app';
-import { Lato } from 'next/font/google';
-import NextTopLoader from 'nextjs-toploader';
+import { Inter } from 'next/font/google';
+import MetamaskNavBar from '@/components/connect-metamask';
+import TronNavBar from '@/components/connect-tron';
+
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -12,28 +10,19 @@ export const metadata: Metadata = {
   description: 'Basic dashboard with Next.js and Shadcn'
 };
 
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['400', '700', '900'],
-  display: 'swap'
-});
+const inter = Inter({ subsets: ['latin'] });
 
-export default async function RootLayout({
+export default function RootLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
-  const session = await auth();
   return (
-    <html lang='en' className={`${lato.className}`} suppressHydrationWarning>
-      <body className={'overflow-hidden'}>
-        <NextTopLoader showSpinner={false} />
-        <NuqsAdapter>
-          <Providers session={session}>
-            <Toaster />
-            {children}
-          </Providers>
-        </NuqsAdapter>
+    <html lang='en'>
+      <body className='mx-auto bg-[#F4F4F5] px-3 py-2 md:py-3 lg:max-w-screen-xl lg:px-0'>
+        <MetamaskNavBar />
+        <TronNavBar />
+        {children}
       </body>
     </html>
   );
