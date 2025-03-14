@@ -5,7 +5,7 @@ import { MetaMaskProvider } from '@metamask/sdk-react';
 import ConnectTronWalletButton from './connect-tron';
 import ConnectMetamaskWalletButton from './connect-metamask';
 
-export const WalletNav = () => {
+export const NavWallet = () => {
   const host =
     typeof window !== 'undefined' ? window.location.host : 'defaultHost';
 
@@ -34,4 +34,4 @@ export const WalletNav = () => {
   );
 };
 
-export default WalletNav;
+export default NavWallet;

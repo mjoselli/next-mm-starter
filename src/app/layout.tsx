@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import WalletNav from '@/components/wallet-nav';
+import NavWallet from '@/components/nav-wallet';
 
 import './globals.css';
 
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className='mx-auto bg-[#F4F4F5] px-3 py-2 md:py-3 lg:max-w-screen-xl lg:px-0'>
-        <WalletNav />
+        <NavWallet />
         {children}
       </body>
     </html>

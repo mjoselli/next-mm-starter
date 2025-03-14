@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import MetamaskIcon from '../../public/icons/MetamaskIcon';
 import { Button } from './ui/button';
 import { useSDK, MetaMaskProvider } from '@metamask/sdk-react';
@@ -32,11 +31,13 @@ export const ConnectMetamaskWalletButton = () => {
     <div className='relative'>
       {connected ? (
         <Popover>
-          <PopoverTrigger>
-            <Button>
-              <MetamaskIcon className='mr-2 h-4 w-4' />
-              {formatAddress(account)}
-            </Button>
+          <PopoverTrigger asChild>
+            <div>
+              <Button>
+                <MetamaskIcon className='mr-2 h-4 w-4' />
+                {formatAddress(account)}
+              </Button>
+            </div>
           </PopoverTrigger>
           <PopoverContent className='right-0 top-10 z-10 mt-2 w-44 rounded-md border bg-gray-100 shadow-lg'>
             <button
