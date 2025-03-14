@@ -55,45 +55,58 @@ const CryptoValues = () => {
 
   return (
     <div className='crypto-values container mx-auto p-4'>
-      <h1 className='mb-4 text-2xl font-bold'>Latest Cryptocurrency Values</h1>
-      <table className='min-w-full border border-gray-200 bg-white'>
-        <thead>
-          <tr>
-            <th className='border-b px-4 py-2'>Position</th>
-            <th className='border-b px-4 py-2'>Name</th>
-            <th className='border-b px-4 py-2'>Symbol</th>
-            <th className='border-b px-4 py-2'>Current Price</th>
-            <th className='border-b px-4 py-2'>Market Cap</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cryptoData.map((crypto, index) => (
-            <tr key={crypto.id}>
-              <td className='border-b px-4 py-2'>
-                {(page - 1) * perPage + index + 1}
-              </td>
-              <td className='border-b px-4 py-2'>{crypto.name}</td>
-              <td className='border-b px-4 py-2'>
-                {crypto.symbol.toUpperCase()}
-              </td>
-              <td className='border-b px-4 py-2'>${crypto.current_price}</td>
-              <td className='border-b px-4 py-2'>${crypto.market_cap}</td>
+      <h1 className='mb-6 text-center text-3xl font-bold'>
+        Latest Cryptocurrency Values
+      </h1>
+      <div className='overflow-x-auto'>
+        <table className='min-w-full border-collapse rounded-lg bg-white shadow-md'>
+          <thead>
+            <tr className='bg-gray-200'>
+              <th className='border-b px-4 py-2 text-left'>Position</th>
+              <th className='border-b px-4 py-2 text-left'>Name</th>
+              <th className='border-b px-4 py-2 text-left'>Symbol</th>
+              <th className='border-b px-4 py-2 text-left'>Current Price</th>
+              <th className='border-b px-4 py-2 text-left'>Market Cap</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className='pagination-controls mt-4 flex items-center justify-between'>
+          </thead>
+          <tbody>
+            {cryptoData.map((crypto, index) => (
+              <tr
+                key={crypto.id}
+                className={`hover:bg-gray-100 ${
+                  index % 2 === 0 ? 'bg-gray-50' : 'bg-white'
+                }`}
+              >
+                <td className='border-b px-4 py-2'>
+                  {(page - 1) * perPage + index + 1}
+                </td>
+                <td className='border-b px-4 py-2'>{crypto.name}</td>
+                <td className='border-b px-4 py-2'>
+                  {crypto.symbol.toUpperCase()}
+                </td>
+                <td className='border-b px-4 py-2'>
+                  ${crypto.current_price.toLocaleString()}
+                </td>
+                <td className='border-b px-4 py-2'>
+                  ${crypto.market_cap.toLocaleString()}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className='pagination-controls mt-6 flex items-center justify-between'>
         <button
           onClick={handlePreviousPage}
           disabled={page === 1}
-          className='rounded bg-gray-200 px-4 py-2 disabled:opacity-50'
+          className='rounded bg-blue-500 px-4 py-2 text-white disabled:opacity-50'
         >
           Previous
         </button>
         <span className='mx-2'>Page {page}</span>
         <button
           onClick={handleNextPage}
-          className='rounded bg-gray-200 px-4 py-2'
+          className='rounded bg-blue-500 px-4 py-2 text-white'
         >
           Next
         </button>
