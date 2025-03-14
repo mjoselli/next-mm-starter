@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import MetamaskNavBar from '@/components/connect-metamask';
-import TronNavBar from '@/components/connect-tron';
+import WalletNav from '@/components/wallet-nav';
 
 import './globals.css';
 
@@ -20,8 +19,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className='mx-auto bg-[#F4F4F5] px-3 py-2 md:py-3 lg:max-w-screen-xl lg:px-0'>
-        <MetamaskNavBar />
-        <TronNavBar />
+        <WalletNav />
         {children}
       </body>
     </html>

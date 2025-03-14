@@ -11,7 +11,7 @@ import {
   PopoverContent
 } from '@/components/ui/popover';
 
-export const ConnectWalletButton = () => {
+export const ConnectMetamaskWalletButton = () => {
   const { sdk, connected, connecting, account } = useSDK();
 
   const connect = async () => {
@@ -56,32 +56,4 @@ export const ConnectWalletButton = () => {
   );
 };
 
-export const NavBar = () => {
-  const host =
-    typeof window !== 'undefined' ? window.location.host : 'defaultHost';
-
-  const sdkOptions = {
-    logging: { developerMode: true },
-    checkInstallationImmediately: false,
-    dappMetadata: {
-      name: 'Next-Metamask-Boilerplate',
-      url: host // using the host constant defined above
-    }
-  };
-
-  return (
-    <nav className='mx-auto flex max-w-screen-xl items-center justify-between rounded-xl px-6 py-7'>
-      <Link href='/crypto-values' className='text-2xl font-bold'>
-        Crypto Values
-      </Link>
-
-      <span className='hidden text-2xl font-bold sm:block' />
-
-      <MetaMaskProvider debug={true} sdkOptions={sdkOptions}>
-        <ConnectWalletButton />
-      </MetaMaskProvider>
-    </nav>
-  );
-};
-
-export default NavBar;
+export default ConnectMetamaskWalletButton;

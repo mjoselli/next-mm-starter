@@ -12,7 +12,7 @@ import {
   PopoverContent
 } from '@/components/ui/popover';
 
-export const ConnectWalletButton = () => {
+export const ConnectTronWalletButton = () => {
   const {
     address, // The connected wallet address
     walletName, // The wallet name
@@ -41,13 +41,4 @@ export const ConnectWalletButton = () => {
   );
 };
 
-export const NavBar = () => {
-  return (
-    <nav className='mx-auto flex max-w-screen-xl items-center justify-between rounded-xl px-6 py-7'>
-      <span className='hidden text-2xl font-bold sm:block' />
-      <ConnectWalletButton />
-    </nav>
-  );
-};
-
-export default NavBar;
+export default ConnectTronWalletButton;
